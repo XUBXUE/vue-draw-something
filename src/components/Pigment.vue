@@ -1,20 +1,27 @@
 <template>
   <div class="pigment" title="Change Color">
-    <svg class="colorPen" :width="width" :height="height" viewBox="0 0 256 256">
+    <svg class="colorPen" :width="width" :height="height" viewBox="0 0 256 256" @click="selectColor">
       <path
         fill="currentColor"
         d="M224 76.7L179.3 32a15.9 15.9 0 0 0-22.6 0l-120 120a15.4 15.4 0 0 0-3.6 5.5l-.2.5a16 16 0 0 0-.9 5.3V208a16 16 0 0 0 16 16h168a8 8 0 0 0 0-16H115.3L224 99.3a16.1 16.1 0 0 0 0-22.6Zm-80-9.4L160.7 84L68 176.7L51.3 160ZM48 208v-28.7L76.7 208Zm48-3.3L79.3 188L172 95.3l16.7 16.7Z"
       />
     </svg>
-    <div class="color-list"></div>
+    <transition name="pigment">
+      <div class="color-list" v-if="showColorList"></div>
+    </transition>
   </div>
 </template>
 
-<script setup lang="ts">
+<script setup lang="ts">import { ref } from 'vue';
+
 const props = defineProps({
   width: String,
   height: String
-})
+});
+let showColorList = ref(false);
+function selectColor() {
+  showColorList.value = !showColorList.value;
+}
 </script>
 
 <style lang="scss" scoped>
@@ -34,7 +41,7 @@ const props = defineProps({
     border-radius: 10px;
     box-shadow: 5px 5px 15px 5px rgba(0, 0, 0, 0.3);
     &::after {
-      content: '';
+      content: "";
       position: absolute;
       top: -17px;
       right: 20px;
@@ -44,5 +51,15 @@ const props = defineProps({
       border-bottom-color: #fff;
     }
   }
+}
+.pigment-enter-active,
+.pigment-leave-active {
+  transition: width 1s ease;
+}
+
+.pigment-enter-from,
+.pigment-leave-to {
+  width: 0;
+  // height: 0;
 }
 </style>

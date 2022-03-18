@@ -2,7 +2,7 @@
   <HomeBackground class="home-bg"/>
   <div class="main-content">
     <h1 class="main-title">Draw Something</h1>
-    <MainButton class="mt-20" @click="start">Start!</MainButton>
+    <MainButton class="mt-30" @click="start">Start!</MainButton>
   </div>
 </template>
 
