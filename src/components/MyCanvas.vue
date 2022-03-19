@@ -62,7 +62,7 @@ function initCanvas(el: HTMLCanvasElement) {
     let positionX = e.clientX - el.offsetLeft;
     let positionY = e.clientY - el.offsetTop;
     ctx.value!.strokeStyle = lineColor.value!;
-    ctx.value!.lineWidth = (lineWidth.value! - 1) * 3 + 3;
+    ctx.value!.lineWidth = lineWidth.value;
     ctx.value!.shadowBlur = 2;
     ctx.value!.shadowColor = lineColor.value!;
     ctx.value?.beginPath();

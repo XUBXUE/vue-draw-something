@@ -44,13 +44,12 @@ const props = defineProps({
   lineColor: String
 });
 const emit = defineEmits(['update:lineWidth']);
-const currentLineWidth = computed(() => props.lineWidth);
 const pens = [
-  { width: 1 },
   { width: 2 },
   { width: 5 },
-  { width: 7 },
-  { width: 9 },
+  { width: 10 },
+  { width: 15 },
+  { width: 20 },
 ];
 
 let penListVisible = ref(false);

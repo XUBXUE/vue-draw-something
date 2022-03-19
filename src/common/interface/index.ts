@@ -1,4 +1,4 @@
 export interface Eraser{
-  width: Number;
-  shape: String;
+  width: number;
+  shape: string;
 }
