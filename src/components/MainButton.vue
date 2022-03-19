@@ -11,17 +11,17 @@
 <style lang="scss" scoped>
 .main-btn {
   padding: 10px 20px;
-  border: none;
+  border: 2px solid #2c3e50;
   border-radius: 5px;
-  color: #FFF;
-  background-color: #2c3e50;
+  color: #2c3e50;
+  font-size: 16px;
+  font-weight: 700;
+  background-color: transparent;
   outline: none;
   cursor: pointer;
 }
 .main-btn:hover {
-  background-color: #20565e;
-}
-.main-btn:active {
   background-color: #2c3e50;
+  color: #FFF;
 }
 </style>

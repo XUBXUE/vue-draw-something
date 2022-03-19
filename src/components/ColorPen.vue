@@ -1,5 +1,5 @@
 <template>
-  <div class="color-pen" title="Change Color">
+  <div class="color-pen" title="Change Width">
     <svg
       class="icon"
       id="penId"
@@ -51,7 +51,7 @@ const pens = [
   { width: 5 },
   { width: 7 },
   { width: 9 },
-]
+];
 
 let penListVisible = ref(false);
 function showPenList() {
