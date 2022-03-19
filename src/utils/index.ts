@@ -8,3 +8,7 @@ export const debounce = (fn: Function, delay: number = 500) => {
     }, delay);
   }
 }
+
+export const getImageUrl = (src: string) => {
+  return new URL(src, import.meta.url).href
+}

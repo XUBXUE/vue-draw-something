@@ -3,7 +3,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeMount, onMounted, ref } from 'vue';
+import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
 import { debounce } from '../utils';
 
 interface Point {
@@ -122,7 +122,7 @@ onMounted(() => {
   init();
   window.addEventListener('resize', resetCanvas);
 });
-onBeforeMount(() => {
+onBeforeUnmount(() => {
   window.removeEventListener('resize', resetCanvas);
 });
 </script>

@@ -8,6 +8,10 @@ body {
   height: 100vh;
 }
 
+ul, li {
+  list-style: none;
+}
+
 @for $i from 1 through 5 {
   .mt-#{$i*10} {
     margin-top: $i * 10px;
