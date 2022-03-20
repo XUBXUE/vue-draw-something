@@ -19,6 +19,10 @@
   background-color: transparent;
   outline: none;
   cursor: pointer;
+  &.small {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
 }
 .main-btn:hover {
   background-color: #2c3e50;

@@ -1,19 +1,43 @@
 <template>
-  <HomeBackground class="home-bg"/>
+  <HomeBackground class="home-bg" />
   <div class="main-content">
     <h1 class="main-title">Draw Something</h1>
-    <MainButton class="mt-30" @click="start">Start!</MainButton>
+    <div>
+      <MainButton class="mt-30" @click="start">Start!</MainButton>
+    </div>
   </div>
+  <DrawDialog v-model="registerVisible" width="40%">
+    <input ref="input" class="draw-input" placeholder="Please enter your name" v-model="userName" type="text" @keyup.enter="confirm" />
+    <MainButton class="mt-30 small" @click="confirm">Confirm</MainButton>
+    <MainButton class="mt-30 ml-20 small" @click="cancel">Cancel</MainButton>
+  </DrawDialog>
 </template>
 
 <script setup lang="ts">
+import { nextTick, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import HomeBackground from '../components/HomeBackground.vue';
 import MainButton from '../components/MainButton.vue';
+import DrawDialog from '../components/drawDialog.vue';
 const router = useRouter();
+const input = ref();
+let registerVisible = ref(false);
+let userName = ref('');
 
-function start() {
-  router.push('/room');
+function confirm() {
+  if (!userName.value) return;
+  router.push('/gameHall');
+  registerVisible.value = false;
+}
+
+function cancel() {
+  registerVisible.value = false;
+}
+
+async function start() {
+  registerVisible.value = true;
+  await nextTick();
+  input.value.focus();
 }
 
 </script>
@@ -37,5 +61,10 @@ function start() {
     font-size: 5vw;
     user-select: none;
   }
+}
+
+.register-enter-active,
+.register-leave-active {
+  transition: all 0.5s ease;
 }
 </style>

@@ -1,6 +1,7 @@
 * {
   padding: 0;
   margin: 0;
+  box-sizing: border-box;
 }
 
 body {
@@ -17,13 +18,56 @@ ul, li {
     margin-top: $i * 10px;
   }
   .mb-#{$i*10} {
-    margin-top: $i * 10px;
+    margin-bottom: $i * 10px;
   }
   .ml-#{$i*10} {
-    margin-top: $i * 10px;
+    margin-left: $i * 10px;
   }
   .mr-#{$i*10} {
-    margin-top: $i * 10px;
+    margin-right: $i * 10px;
+  }
+  .pt-#{$i*10} {
+    padding-top: $i * 10px;
+  }
+  .pb-#{$i*10} {
+    padding-bottom: $i * 10px;
+  }
+  .pl-#{$i*10} {
+    padding-left: $i * 10px;
+  }
+  .pr-#{$i*10} {
+    padding-right: $i * 10px;
+  }
+}
+.mtA {
+  margin-top: auto;
+}
+.draw-input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 10px;
+  box-sizing: border-box;
+  outline: none;
+  border: 1px solid #ececec;
+}
+
+.dialog-mask {
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.3);
+  z-index: 30;
+  .draw-dialog {
+    position: relative;
+    margin: 30vh auto 0;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: #FFF;
+    box-shadow: 0 0 10px 0 rgba(0,0,0,.3);
+    box-sizing: border-box;
+    text-align: center;
   }
 }
 

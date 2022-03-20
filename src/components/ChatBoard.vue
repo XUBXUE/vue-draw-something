@@ -3,17 +3,17 @@
     <div class="chat-record">
       <ul class="message-wrapper">
         <li class="message-item" v-for="(msg, index) in messages" :key="index">
-          <div>{{ msg.userId }}({{msg.time}}):</div>
-          <div>{{ msg.content }}</div>
+          <div class="user">{{ msg.userId }}({{msg.time}}):</div>
+          <div class="content">{{ msg.content }}</div>
         </li>
       </ul>
     </div>
-    <input ref="chatInput" class="chat-input" maxlength="20" :value="message" type="text" @keyup.enter.stop="sendMessage" />
+    <input ref="chatInput" class="draw-input mtA" :value="message" type="text" @keyup.enter.stop="sendMessage" />
   </div>
 </template>
 
 <script setup lang="ts">
-import { ref } from 'vue';
+import { nextTick, ref } from 'vue';
 import { formatDate } from '../utils';
 interface Message {
   content: string;
@@ -25,7 +25,7 @@ const messages = ref<Message[]>([]);
 const chatInput = ref();
 
 function sendMessage(event: any) {
-  let value = event!.target.value;
+  let value = event.target.value;
   if (!value) return;
   messages.value.push({
     content: value,
@@ -35,14 +35,14 @@ function sendMessage(event: any) {
   message.value = '';
 }
 
-function focusInput() {
-  console.dir(chatInput.value.focus);
+async function focusInput() {
+  await nextTick()
   chatInput.value.focus();
-}
+};
 
 defineExpose({
   focusInput
-})
+});
 </script>
 
 <style lang="scss" scoped>
@@ -52,11 +52,11 @@ defineExpose({
   flex-direction: column;
   bottom: 30px;
   left: 30px;
-  width: 50vw;
+  width: 40vw;
   height: 40vh;
   padding: 10px 20px 20px;
   border-radius: 10px;
-  background-color: rgba(0, 0, 0, 0.1);
+  background-color: rgba(0, 0, 0, 0.3);
   z-index: 20;
   .chat-record {
     flex: 1;
@@ -72,17 +72,14 @@ defineExpose({
         margin-bottom: 5px;
         display: flex;
         align-items: center;
+        .user {
+          flex-shrink: 0;
+        }
+        .content {
+          margin-left: 5px;
+        }
       }
     }
-  }
-  .chat-input {
-    width: 100%;
-    padding: 10px;
-    margin-top: auto;
-    border-radius: 10px;
-    box-sizing: border-box;
-    outline: none;
-    border: 1px solid #ececec;
   }
 }
 </style>
