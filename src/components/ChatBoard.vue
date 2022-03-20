@@ -8,7 +8,7 @@
         </li>
       </ul>
     </div>
-    <input class="chat-input" maxlength="20" :value="message" type="text" @keyup.enter="sendMessage" />
+    <input ref="chatInput" class="chat-input" maxlength="20" :value="message" type="text" @keyup.enter.stop="sendMessage" />
   </div>
 </template>
 
@@ -22,8 +22,11 @@ interface Message {
 }
 let message = ref<string>();
 const messages = ref<Message[]>([]);
+const chatInput = ref();
+
 function sendMessage(event: any) {
   let value = event!.target.value;
+  if (!value) return;
   messages.value.push({
     content: value,
     userId: 'xbx',
@@ -31,6 +34,15 @@ function sendMessage(event: any) {
   });
   message.value = '';
 }
+
+function focusInput() {
+  console.dir(chatInput.value.focus);
+  chatInput.value.focus();
+}
+
+defineExpose({
+  focusInput
+})
 </script>
 
 <style lang="scss" scoped>
