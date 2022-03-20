@@ -1,5 +1,5 @@
 <template>
-  <canvas class="my-canvas" :height="height" :width="width" ref="el" />
+  <canvas ref="el" class="my-canvas" :height="height" :width="width" />
   <Pigment :width="iconSize" :height="iconSize" v-model:lineColor="lineColor" />
   <ColorPen
     :width="iconSize"

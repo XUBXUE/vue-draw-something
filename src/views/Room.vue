@@ -1,5 +1,5 @@
 <template>
-  <MyCanvas ref="el" />
+  <MyCanvas />
 </template>
 
 <script setup lang="ts">
