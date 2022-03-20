@@ -24,10 +24,7 @@
             :key="index"
             @click.stop="selectPen(i.width)"
           >
-            <div
-              class="pen"
-              :style="{ 'width': `${(index + 1) * 6}px`, 'height': `${(index + 1) * 6}px` }"
-            />
+            <div class="pen" :style="{ 'width': `${i.width * 1.5}px`, 'height': `${i.width * 1.5}px` }" />
           </li>
         </ul>
       </div>

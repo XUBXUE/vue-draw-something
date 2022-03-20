@@ -31,7 +31,7 @@
           >
             <div
               :class="['eraser', i.shape]"
-              :style="{ 'width': `${i.width * 3}px`, 'height': `${i.width * 3}px` }"
+              :style="{ 'width': `${i.width * 2}px`, 'height': `${i.width * 2}px` }"
             />
           </li>
         </ul>
@@ -50,16 +50,16 @@ defineProps({
 const emit = defineEmits(['selectEraser']);
 let eraserListVisible = ref(false);
 const erasers = [
-  { width: 2, shape: 'circle' },
   { width: 4, shape: 'circle' },
-  { width: 6, shape: 'circle' },
   { width: 8, shape: 'circle' },
-  { width: 10, shape: 'circle' },
-  { width: 2, shape: 'square' },
+  { width: 12, shape: 'circle' },
+  { width: 16, shape: 'circle' },
+  { width: 20, shape: 'circle' },
   { width: 4, shape: 'square' },
-  { width: 6, shape: 'square' },
   { width: 8, shape: 'square' },
-  { width: 10, shape: 'square' },
+  { width: 12, shape: 'square' },
+  { width: 16, shape: 'square' },
+  { width: 20, shape: 'square' },
 ];
 function selectEraser(eraser: Eraser) {
   emit('selectEraser', eraser);
@@ -71,7 +71,6 @@ function showEraserList() {
 
 function closeDialog(e: any) {
   const target = e.target;
-  closeDialog
   if ((target.tagName == 'svg' || target.tagName == 'path') && target.id == 'eraserId') return;
   eraserListVisible.value = false;
 }
@@ -96,7 +95,7 @@ onBeforeUnmount(() => {
     position: absolute;
     top: 70px;
     right: 0;
-    width: 400px;
+    width: 350px;
     border-radius: 10px;
     background-color: #fff;
     box-shadow: 6px 3px 8px 3px rgba(0, 0, 0, 0.2);
@@ -118,12 +117,13 @@ onBeforeUnmount(() => {
         justify-content: center;
         align-items: center;
         margin: 10px 15px;
-        width: 50px;
-        height: 50px;
+        width: 40px;
+        height: 40px;
         cursor: pointer;
         user-select: none;
         .eraser {
           border: 2px solid #000;
+          box-sizing: border-box;
           &.circle {
             border-radius: 50%;
           }
@@ -132,6 +132,7 @@ onBeforeUnmount(() => {
     }
   }
 }
+
 .eraser-enter-active,
 .eraser-leave-active {
   transition: opacity 0.5s ease;
