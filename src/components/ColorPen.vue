@@ -24,7 +24,7 @@
             :key="index"
             @click.stop="selectPen(i.width)"
           >
-            <div class="pen" :style="{ 'width': `${i.width * 1.5}px`, 'height': `${i.width * 1.5}px` }" />
+            <div class="pen" :style="{ 'width': `${i.width * 1.5}px`, 'height': `${i.width * 1.5}px`, backgroundColor: lineWidth == i.width ? lineColor : '#000' }" />
           </li>
         </ul>
       </div>
@@ -33,8 +33,8 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onBeforeUnmount, onMounted, ref } from 'vue';
-const props = defineProps({
+import { onBeforeUnmount, onMounted, ref } from 'vue';
+defineProps({
   width: String,
   height: String,
   lineWidth: Number,

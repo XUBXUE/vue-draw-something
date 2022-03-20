@@ -22,7 +22,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref, watch } from 'vue';
+import { computed, onMounted, onUnmounted, ref, watch } from 'vue';
 import Pigment from './Pigment.vue';
 import ColorPen from './ColorPen.vue';
 import Reset from './Reset.vue';
@@ -135,6 +135,7 @@ function drawTrack() {
   let canvasPic = new Image();
   canvasPic.src = drawHistory[step];
   canvasPic.addEventListener('load', () => {
+    ctx.value!.shadowBlur = 0;
     ctx.value!.drawImage(canvasPic, 0, 0);
   });
 }
@@ -150,8 +151,23 @@ function reset() {
   ctx.value!.clearRect(0, 0, el.value!.width, el.value!.height);
 }
 
+// 撤销恢复快捷键
+function shortcutKey(event: KeyboardEvent) {
+  if (event.ctrlKey == true && event.key == 'z') {//Ctrl+Z 撤销
+    revoke();
+  }
+  if (event.ctrlKey == true && event.key == 'y') {//Ctrl+Y 恢复
+    recovery();
+  }
+}
+
 onMounted(() => {
+  document.addEventListener('keyup', shortcutKey);
   initCanvas(el.value!);
+});
+
+onUnmounted(() => {
+  document.removeEventListener('keyup', shortcutKey);
 });
 </script>
 

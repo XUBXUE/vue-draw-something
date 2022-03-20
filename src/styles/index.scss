@@ -26,3 +26,19 @@ ul, li {
     margin-top: $i * 10px;
   }
 }
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+  background-color: #FFF;
+}
+
+::-webkit-scrollbar-track {
+  box-shadow: inset 0 0 6px rgba(0,0,0,0);
+  background-color: #FFF;
+}
+
+::-webkit-scrollbar-thumb {
+  box-shadow: inset 0 0 6px rgba(0,0,0,0);
+  background-color: #D5D5D5;
+}
