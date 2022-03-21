@@ -35,6 +35,7 @@ function cancel() {
 }
 
 async function start() {
+  userName.value = '';
   registerVisible.value = true;
   await nextTick();
   input.value.focus();

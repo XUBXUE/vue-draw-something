@@ -43,7 +43,7 @@ watch([lineWidth, lineColor], () => {
 });
 
 let step = -1; // 保存每一笔的步骤 做撤销和恢复操作
-const drawHistory: string[] = [];
+let drawHistory: string[] = [];
 
 const height = ref(document.body.clientHeight);
 const width = ref(document.body.clientWidth);
@@ -148,6 +148,8 @@ function selectEraser(selectEraser: EraserApi) {
 
 // 重置画布
 function reset() {
+  drawHistory = [];
+  step = -1;
   ctx.value!.clearRect(0, 0, el.value!.width, el.value!.height);
 }
 
