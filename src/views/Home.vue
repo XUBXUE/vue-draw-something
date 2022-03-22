@@ -6,7 +6,7 @@
       <MainButton class="mt-30" @click="start">Start!</MainButton>
     </div>
   </div>
-  <DrawDialog v-model="registerVisible" width="40%">
+  <DrawDialog v-model="registerVisible" width="20%">
     <input ref="input" class="draw-input" placeholder="Please enter your name" v-model="userName" type="text" @keyup.enter="confirm" />
     <MainButton class="mt-30 small" @click="confirm">Confirm</MainButton>
     <MainButton class="mt-30 ml-20 small" @click="cancel">Cancel</MainButton>
