@@ -131,9 +131,10 @@ function recovery() {
 
 // 画出撤销/恢复后的画面
 function drawTrack() {
-  reset(); // 重置画布
+  ctx.value!.clearRect(0, 0, el.value!.width, el.value!.height); // 重置画布
   let canvasPic = new Image();
   canvasPic.src = drawHistory[step];
+  console.log(drawHistory)
   canvasPic.addEventListener('load', () => {
     ctx.value!.shadowBlur = 0;
     ctx.value!.drawImage(canvasPic, 0, 0);
