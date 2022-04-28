@@ -1,7 +1,9 @@
 import { defineStore } from "pinia";
 import socket from "../plugin/io";
 interface OnlineUser {
+  id: string
   userName: string
+  userStatus: string
 }
 export default defineStore({
   id: "user",
@@ -13,7 +15,7 @@ export default defineStore({
   actions: {
     setUserName(userName) {
       this.userName = userName;
-      socket.emit('connected', { userName: this.userName, userState: 'online' });
+      socket.emit('connected', { userName: this.userName });
     },
     updateUsers(users) {
       this.onlineUser = users.users;

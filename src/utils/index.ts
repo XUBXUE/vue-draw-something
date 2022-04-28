@@ -1,5 +1,5 @@
 export const debounce = (fn: Function, delay: number = 500) => {
-  let timer: number;
+  let timer: any;
   return function () {
     timer && clearTimeout(timer);
     const arg = [...arguments];

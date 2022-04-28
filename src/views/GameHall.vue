@@ -28,7 +28,7 @@
         <li class="online-users">在线人数</li>
         <li class="user-item" v-for="user in onlineUsers" :key="user.userName">
           <span>{{ user.userName }}</span>
-          <span class="online">online</span>
+          <span class="online">{{user.userStatus == '0' ? '空闲' : '游戏中'}}</span>
         </li>
       </ul>
     </aside>
@@ -65,7 +65,7 @@ let createRoomName = ref('');
 let input = ref();
 
 socket.on('getUsers', users => {
-  console.log(users)
+  console.log('users', users)
   userStore.updateUsers(users);
 });
 socket.on('newUser', user => {

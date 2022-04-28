@@ -19,6 +19,7 @@
   background-color: transparent;
   outline: none;
   cursor: pointer;
+  transition: all .3s;
   &.small {
     padding: 5px 10px;
     font-size: 12px;
